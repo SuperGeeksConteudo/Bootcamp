@@ -1,0 +1,41 @@
+service: proj00s
+
+provider:
+  name: aws
+  region: us-east-1
+  runtime: nodejs16.x
+  memorySize: 128
+  timeout: 10
+  httpApi:
+    cors: true
+
+functions:
+
+  inicio:
+    handler: handler.inicio
+    events:
+      - httpApi:
+          method: GET
+          path: /
+
+  teste:
+    handler: handler.teste
+    events:
+      - httpApi:
+          method: GET
+          path: /teste
+
+  produto:
+    handler: handler.produto
+    events:
+      - httpApi:
+          method: GET
+          path: /produto/{codigo}
+
+  contato:
+    handler: handler.contato
+    events:
+      - httpApi:
+          method: GET
+          path: /contato
+          
